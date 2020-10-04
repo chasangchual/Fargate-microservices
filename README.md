@@ -1,4 +1,10 @@
 
+## Project spectrum
+
+This is a CDK project including following components:
+
+- VPC Creation
+- ECS cluster Fargate type
 
 ## CDK development environment:
 
@@ -9,4 +15,12 @@ cdk --version
 python3 -m venv env
 source env/bin/activate
 pip install --upgrade -r requirements.txt
+```
+
+## CDK Deployment procedure
+
+```
+cdk synth
+cdk deploy vpc-stack --profile "my-profile"
+cdk deploy ecs-stack --profile "my-profile"
 ```
