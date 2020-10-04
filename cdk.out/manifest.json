@@ -1,0 +1,689 @@
+{
+  "version": "6.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "vpc": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "vpc.template.json"
+      },
+      "metadata": {
+        "/vpc/devVPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPC524BF54C",
+            "trace": [
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:309:25)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet1Subnet2E5540AB",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:609:24)",
+              "new PublicSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:763:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:518:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet1RouteTableD693476A",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:624:23)",
+              "new PublicSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:763:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:518:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet1RouteTableAssociationACF1C4FE",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:629:9)",
+              "new PublicSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:763:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:518:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet1DefaultRoute030E77C6",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:661:23)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:342:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:341:32)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet1EIP3F331112",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:776:27)",
+              "NatGatewayProvider.configureNat (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/nat.js:59:33)",
+              "Vpc.createNatGateways (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:347:22)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet1NATGatewayED579EE6",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:774:21)",
+              "NatGatewayProvider.configureNat (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/nat.js:59:33)",
+              "Vpc.createNatGateways (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:347:22)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet2Subnet2C6C27AC",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:609:24)",
+              "new PublicSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:763:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:518:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet2RouteTable263FF99F",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:624:23)",
+              "new PublicSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:763:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:518:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet2RouteTableAssociationE6FD518E",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:629:9)",
+              "new PublicSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:763:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:518:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPublicSubnet2DefaultRouteF9447A4E",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:661:23)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:342:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:341:32)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet1Subnet712E0217",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:609:24)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:523:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet1RouteTable46900521",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:624:23)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:523:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet1RouteTableAssociation8B9FE954",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:629:9)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:523:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet1DefaultRoute4148311F",
+            "trace": [
+              "PrivateSubnet.addRoute (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:703:23)",
+              "NatGatewayProvider.configureSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/nat.js:70:16)",
+              "NatGatewayProvider.configureNat (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/nat.js:64:18)",
+              "Vpc.createNatGateways (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:347:22)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet2SubnetAA0D521D",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:609:24)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:523:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet2RouteTableBCC75866",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:624:23)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:523:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet2RouteTableAssociation8ABBFCEB",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:629:9)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:523:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCPrivateSubnet2DefaultRouteBD18D8FF",
+            "trace": [
+              "PrivateSubnet.addRoute (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:703:23)",
+              "NatGatewayProvider.configureSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/nat.js:70:16)",
+              "NatGatewayProvider.configureNat (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/nat.js:64:18)",
+              "Vpc.createNatGateways (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:347:22)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IsolatedSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIsolatedSubnet1Subnet1A2735F3",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:609:24)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:528:44",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IsolatedSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIsolatedSubnet1RouteTableFB79FE72",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:624:23)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:528:44",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IsolatedSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIsolatedSubnet1RouteTableAssociation19A82E3F",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:629:9)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:528:44",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IsolatedSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIsolatedSubnet2SubnetD2338F17",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:609:24)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:528:44",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IsolatedSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIsolatedSubnet2RouteTable4AEAC114",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:624:23)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:528:44",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IsolatedSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIsolatedSubnet2RouteTableAssociation80F245F9",
+            "trace": [
+              "new Subnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:629:9)",
+              "new PrivateSubnet (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:798:9)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:528:44",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:502:32)",
+              "Vpc.createSubnets (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:493:18)",
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:330:14)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCIGW3A5029B7",
+            "trace": [
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:334:25)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/devVPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devVPCVPCGWD5E19824",
+            "trace": [
+              "new Vpc (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:337:25)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/private-subnet-1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "privatesubnet1ABCDFA53",
+            "trace": [
+              "new StringParameter (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ssm/lib/parameter.js:87:26)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/private-subnet-2/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "privatesubnet2260E229D",
+            "trace": [
+              "new StringParameter (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/aws-ssm/lib/parameter.js:87:26)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:127:9",
+              "visit (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "visit (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:178:9)",
+              "injectMetadataResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:116:5)",
+              "Object.synthesize (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/stage.js:80:41)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:51",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:25",
+              "Kernel._ensureSync (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8395:20)",
+              "Kernel.invoke (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7757:26)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ],
+        "/vpc/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:30:35)",
+              "/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:127:9",
+              "visit (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "visit (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:178:9)",
+              "injectMetadataResources (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:116:5)",
+              "Object.synthesize (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/private/var/folders/my/gf305mps5kn9mslgnnqs5vq80000gq/T/jsii-kernel-ozyr06/node_modules/@aws-cdk/core/lib/stage.js:80:41)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:51",
+              "Kernel._wrapSandboxCode (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:25",
+              "Kernel._ensureSync (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8395:20)",
+              "Kernel.invoke (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7757:26)",
+              "KernelHost.processRequest (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/o.benlagha/src/bitbucket.com/equa/aws-cdk-snippets/Fargate-microservices/env/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:456:21)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
