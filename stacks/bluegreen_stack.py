@@ -302,7 +302,7 @@ class BlueGreen(core.Stack):
 
         NginxAppService.connections.allow_from(alb, aws_ec2.Port.tcp(80))
         NginxAppService.connections.allow_from(alb, aws_ec2.Port.tcp(8080))
-        NginxAppService.attach_to_application_target_group(blueGroup);
+        NginxAppService.attach_to_application_target_group(blueGroup)
 
         # =============================================================================
         # CODE DEPLOY - Deployment Group CUSTOM RESOURCE for the Blue/ Green deployment
@@ -397,8 +397,8 @@ class BlueGreen(core.Stack):
 
         codePipelineServiceRole.add_to_policy(inlinePolicyForCodePipeline);
 
-        sourceArtifact = codepipeline.Artifact('sourceArtifact');
-        buildArtifact = codepipeline.Artifact('buildArtifact');
+        sourceArtifact = codepipeline.Artifact('sourceArtifact')
+        buildArtifact = codepipeline.Artifact('buildArtifact')
 
         # S3 bucket for storing the code pipeline artifacts
         NginxAppArtifactsBucket = s3.Bucket(self, "NginxAppArtifactsBucket",
@@ -411,7 +411,7 @@ class BlueGreen(core.Stack):
             effect= aws_iam.Effect.DENY,
             actions= ["s3:PutObject"],
             principals= [aws_iam.AnyPrincipal()],
-            resources= [NginxAppArtifactsBucket.bucket_arn.join("/*")],
+            resources= [NginxAppArtifactsBucket.bucket_arn+"/*"],
             conditions={
                 "StringNotEquals":{
                     "s3:x-amz-server-side-encryption": "aws:kms"
@@ -423,9 +423,9 @@ class BlueGreen(core.Stack):
             effect= aws_iam.Effect.DENY,
             actions= ["s3:*"],
             principals= [aws_iam.AnyPrincipal()],
-            resources= [NginxAppArtifactsBucket.bucket_arn.join("/*")],
+            resources= [NginxAppArtifactsBucket.bucket_arn+"/*"],
             conditions= {
-                "Bool": {
+                "Bool":{
                     "aws:SecureTransport": "false"
                 }
             }
@@ -472,4 +472,19 @@ class BlueGreen(core.Stack):
                     ]
                 )
             ]
+        )
+
+        # =============================================================================
+        # Export the outputs
+        # =============================================================================
+        core.CfnOutput(self, "ecsBlueGreenCodeRepo", 
+            description= "Demo app code commit repository",
+            export_name= "ecsBlueGreenDemoAppRepo",
+            value= NginxCodeCommitrepo.repository_clone_url_http
+        )
+
+        core.CfnOutput(self, "ecsBlueGreenLBDns", 
+            description= "Load balancer DNS",
+            export_name= "ecsBlueGreenLBDns",
+            value= alb.load_balancer_dns_name
         )

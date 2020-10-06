@@ -4,6 +4,7 @@ from aws_cdk import core
 from stacks.vpc_stack import VPCStack
 from stacks.ecs_stack import ECSStack
 from stacks.bluegreen_stack import BlueGreen
+from stacks.test import tests3
 
 
 
