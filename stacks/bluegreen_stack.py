@@ -19,7 +19,7 @@ from aws_cdk import (
 class BlueGreen(core.Stack):
     
 
-    def __init__(self, scope: core.Construct, id: str, vpc:aws_ec2.Vpc, ecs_cluster=aws_ecs.Cluster, **kwargs) -> None:
+    def __init__(self, scope: core.Construct, id: str, vpc:aws_ec2.Vpc, ecs_cluster=aws_ecs.Cluster,  alb=elbv2.ApplicationLoadBalancer, albTestListener=elbv2.ApplicationListener,albProdListener=elbv2.ApplicationListener, blueGroup=elbv2.ApplicationTargetGroup, greenGroup=elbv2.ApplicationTargetGroup, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         ECS_APP_NAME="Nginx-app",
@@ -127,66 +127,7 @@ class BlueGreen(core.Stack):
         )
 
 
-        # =============================================================================
-        # VPC, ECS Cluster, ELBs and Target groups for the Blue/ Green deployment
-        # =============================================================================
-
-        # Creating an application load balancer, listener and two target groups for Blue/Green deployment
-        alb = elbv2.ApplicationLoadBalancer(self, "alb",
-            vpc= vpc,
-            internet_facing=True
-        )
-        
-        albProdListener = alb.add_listener('albProdListener',
-            port=80
-        )
-        
-        albTestListener = alb.add_listener('albTestListener',
-            port=8080
-        )
-
-        albProdListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere')
-        albTestListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere')
-
-        # Target group 1
-        blueGroup = elbv2.ApplicationTargetGroup(self, "blueGroup",
-            vpc=vpc,
-            protocol=elbv2.ApplicationProtocol.HTTP,
-            port=80,
-            target_type=elbv2.TargetType.IP,
-            health_check={
-                "path": "/",
-                "timeout": core.Duration.seconds(10),
-                "interval": core.Duration.seconds(15),
-                "healthy_http_codes": "200,404"
-            }
-        )
-
-        # Target group 2
-        greenGroup = elbv2.ApplicationTargetGroup(self, "greenGroup",
-            vpc=vpc,
-            protocol=elbv2.ApplicationProtocol.HTTP,
-            port=80,
-            target_type=elbv2.TargetType.IP,
-            health_check={
-                "path": "/",
-                "timeout": core.Duration.seconds(10),
-                "interval": core.Duration.seconds(15),
-                "healthy_http_codes": "200,404"
-            }
-        )
-
-        # Registering the blue target group with the production listener of load balancer
-        albProdListener.add_target_groups("blueTarget",
-            target_groups= [blueGroup]
-        )
-
-
-        # Registering the green target group with the test listener of load balancer
-        albTestListener.add_target_groups("greenTarget",
-            target_groups= [greenGroup]
-        )
-
+  
         # ================================================================================================
         # CloudWatch Alarms for 4XX errors
         blue4xxMetric = aws_cloudwatch.Metric(
@@ -194,7 +135,7 @@ class BlueGreen(core.Stack):
             metric_name= 'HTTPCode_Target_4XX_Count',
             dimensions={
                 "TargetGroup":blueGroup.target_group_full_name,
-                "LoadBalancer":alb.load_balancer_full_name
+                "LoadBalancer":self.alb.load_balancer_full_name
             },
             statistic="sum",
             period=core.Duration.minutes(1)
@@ -213,7 +154,7 @@ class BlueGreen(core.Stack):
             metric_name= 'HTTPCode_Target_4XX_Count',
             dimensions= {
                 "TargetGroup":greenGroup.target_group_full_name,
-                "LoadBalancer":alb.load_balancer_full_name
+                "LoadBalancer":self.alb.load_balancer_full_name
             },
             statistic= "sum",
             period= core.Duration.minutes(1)
@@ -300,9 +241,9 @@ class BlueGreen(core.Stack):
             service_name= ECS_APP_NAME
         )
 
-        NginxAppService.connections.allow_from(alb, aws_ec2.Port.tcp(80))
-        NginxAppService.connections.allow_from(alb, aws_ec2.Port.tcp(8080))
-        NginxAppService.attach_to_application_target_group(blueGroup)
+        NginxAppService.connections.allow_from(self.alb, aws_ec2.Port.tcp(80))
+        NginxAppService.connections.allow_from(self.alb, aws_ec2.Port.tcp(8080))
+        NginxAppService.attach_to_application_target_group(self.blueGroup)
 
         # =============================================================================
         # CODE DEPLOY - Deployment Group CUSTOM RESOURCE for the Blue/ Green deployment
@@ -316,10 +257,10 @@ class BlueGreen(core.Stack):
                 "DeploymentGroupName": ECS_DEPLOYMENT_GROUP_NAME,
                 "DeploymentConfigName": ECS_DEPLOYMENT_CONFIG_NAME,
                 "ServiceRoleArn": codeDeployServiceRole.role_arn,
-                "BlueTargetGroup": blueGroup.target_group_name,
-                "GreenTargetGroup": greenGroup.target_group_name,
-                "ProdListenerArn": albProdListener.listener_arn,
-                "TestListenerArn": albTestListener.listener_arn,
+                "BlueTargetGroup": self.blueGroup.target_group_name,
+                "GreenTargetGroup": self.greenGroup.target_group_name,
+                "ProdListenerArn": self.albProdListener.listener_arn,
+                "TestListenerArn": self.albTestListener.listener_arn,
                 "EcsClusterName": ecs_cluster.cluster_name,
                 "EcsServiceName": NginxAppService.service_name,
                 "TerminationWaitTime": ECS_TASKSET_TERMINATION_WAIT_TIME,
@@ -486,5 +427,5 @@ class BlueGreen(core.Stack):
         core.CfnOutput(self, "ecsBlueGreenLBDns", 
             description= "Load balancer DNS",
             export_name= "ecsBlueGreenLBDns",
-            value= alb.load_balancer_dns_name
+            value= self.alb.load_balancer_dns_name
         )
