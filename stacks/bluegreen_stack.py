@@ -117,7 +117,7 @@ class BlueGreen(core.Stack):
 
         # Custom resource to create the deployment group
         createDeploymentGroupLambda = aws_lambda.Function(self, 'createDeploymentGroupLambda',
-            code = aws_lambda.Code.from_asset("custom_resources_bluegreen"),
+            code = aws_lambda.Code.from_asset("custom_resources"),
             runtime= aws_lambda.Runtime.PYTHON_3_8,
             handler= 'create_deployment_group.handler',
             role= customLambdaServiceRole,

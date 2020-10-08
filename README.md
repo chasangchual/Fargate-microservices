@@ -23,4 +23,6 @@ pip install --upgrade -r requirements.txt
 cdk synth
 cdk deploy vpc-stack --profile "my-profile"
 cdk deploy ecs-stack --profile "my-profile"
+cdk deploy bluegreen-stack --profile "my-profile"
+cdk deploy flask-pipeline-stack --profile "my-profile"
 ```

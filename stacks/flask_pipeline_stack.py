@@ -24,11 +24,15 @@ class FlaskPipelineStack(core.Stack):
 
         ECS_APP_NAME="Flask-app",
         ECS_DEPLOYMENT_GROUP_NAME = "FlaskAppECSBlueGreen"
-        ECS_DEPLOYMENT_CONFIG_NAME = "CodeDeployDefault.HalfAtATime"
+        ECS_DEPLOYMENT_CONFIG_NAME = "CodeDeployDefault.ECSAllAtOnce"
         ECS_TASKSET_TERMINATION_WAIT_TIME = 10
         ECS_TASK_FAMILY_NAME = "Flask-microservice"
         ECS_APP_NAME = "Flask-microservice"
         ECS_APP_LOG_GROUP_NAME = "/ecs/Flask-microservice"
+        DUMMY_TASK_FAMILY_NAME = "sample-Nginx-microservice"
+        DUMMY_APP_NAME = "sample-Nginx-microservice"
+        DUMMY_APP_LOG_GROUP_NAME = "/ecs/sample-Nginx-microservice"
+        DUMMY_CONTAINER_IMAGE = "smuralee/nginx"
 
 
         # =============================================================================
@@ -143,7 +147,7 @@ class FlaskPipelineStack(core.Stack):
 
         # Custom resource to create the deployment group
         createFlaskDeploymentGroupLambda = aws_lambda.Function(self, 'createFlaskDeploymentGroupLambda',
-            code = aws_lambda.Code.from_asset("custom_resources_flask"),
+            code = aws_lambda.Code.from_asset("custom_resources"),
             runtime= aws_lambda.Runtime.PYTHON_3_8,
             handler= 'create_deployment_group.handler',
             role= FlaskcustomLambdaServiceRole,
@@ -157,34 +161,118 @@ class FlaskPipelineStack(core.Stack):
         # =============================================================================
 
         # Creating an application load balancer, listener and two target groups for  deployment
-        alb = elbv2.ApplicationLoadBalancer(self, "alb",
+        Flaskalb = elbv2.ApplicationLoadBalancer(self, "Flaskalb",
             vpc= vpc,
             internet_facing=True
         )
 
-        FlaskalbProdListener = alb.add_listener('FlaskalbProdListener',
+        FlaskalbProdListener = Flaskalb.add_listener('FlaskalbProdListener',
             port=80,
-            protocol=elbv2.ApplicationProtocol.HTTP,
+        )
+
+        FlaskalbTestListener = Flaskalb.add_listener('FlaskalbTestListener',
+            port=8080,
         )
 
         FlaskalbProdListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere')
-
-        FlaskGroup = elbv2.ApplicationTargetGroup(self, "FlaskGroup",
+        FlaskalbTestListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere')
+        # Target Group 1
+        FlaskBlueGroup = elbv2.ApplicationTargetGroup(self, "FlaskBlueGroup",
             vpc=vpc,
             protocol=elbv2.ApplicationProtocol.HTTP,
             port=80,
             target_type=elbv2.TargetType.IP,
             health_check={
-                "path": "/",
+                "path": "/api/test",
                 "timeout": core.Duration.seconds(10),
                 "interval": core.Duration.seconds(15),
                 "healthy_http_codes": "200,404"
             }
         )
 
+        # elbv2.ApplicationListenerRule(self,
+        #     id="FlaskAlbListenerRule", 
+        #     path_pattern="/api/*", 
+        #     priority=1, 
+        #     listener=FlaskalbProdListener, 
+        #     target_groups=[FlaskBlueGroup]
+        # )
+
+        # Target Group 2
+        FlaskGreenGroup = elbv2.ApplicationTargetGroup(self, "FlaskGreenGroup",
+            vpc=vpc,
+            protocol=elbv2.ApplicationProtocol.HTTP,
+            port=80,
+            target_type=elbv2.TargetType.IP,
+            health_check={
+                "path": "/api/test",
+                "timeout": core.Duration.seconds(10),
+                "interval": core.Duration.seconds(15),
+                "healthy_http_codes": "200,404"
+            }
+        )
+
+        #TODO Delete this after using one load balancer for all microservices
+        FlaskalbProdListener.add_fixed_response("DummyResponsePrd",
+            status_code= "404"
+        )
+
+        FlaskalbTestListener.add_fixed_response("DummyResponseTest",
+            status_code= "404"
+            )
         # Registering the blue target group with the production listener of load balancer
-        FlaskalbProdListener.add_target_groups("FlaskTarget",
-            target_groups= [FlaskGroup]
+
+        FlaskalbProdListener.add_target_groups("blueTarget",
+            priority=1, 
+            path_pattern = "/api/*",
+            target_groups= [FlaskBlueGroup]
+        )
+
+        # Registering the green target group with the test listener of load balancer
+
+        FlaskalbTestListener.add_target_groups("greenTarget",
+            priority=1, 
+            path_pattern = "/api/*",
+            target_groups= [FlaskGreenGroup]
+        )
+
+       # ================================================================================================
+        # CloudWatch Alarms for 4XX errors
+        Flaskblue4xxMetric = aws_cloudwatch.Metric(
+            namespace= 'AWS/ApplicationELB',
+            metric_name= 'FlaskHTTPCode_Target_4XX_Count',
+            dimensions={
+                "TargetGroup":FlaskBlueGroup.target_group_full_name,
+                "LoadBalancer":Flaskalb.load_balancer_full_name
+            },
+            statistic="sum",
+            period=core.Duration.minutes(1)
+        )
+
+        FlaskblueGroupAlarm = aws_cloudwatch.Alarm(self, "Flaskblue4xxErrors",
+            alarm_name= "FlaskBlue_4xx_Alarm",
+            alarm_description= "CloudWatch Alarm for the 4xx errors of Blue target group",
+            metric= Flaskblue4xxMetric,
+            threshold= 1,
+            evaluation_periods= 1
+        )
+
+        Flaskgreen4xxMetric = aws_cloudwatch.Metric(
+            namespace= 'AWS/ApplicationELB',
+            metric_name= 'FlaskHTTPCode_Target_4XX_Count',
+            dimensions= {
+                "TargetGroup":FlaskGreenGroup.target_group_full_name,
+                "LoadBalancer":Flaskalb.load_balancer_full_name
+            },
+            statistic= "sum",
+            period= core.Duration.minutes(1)
+        )
+        FlaskgreenGroupAlarm = aws_cloudwatch.Alarm(self, "Flaskgreen4xxErrors",
+            alarm_name= "FlaskGreen_4xx_Alarm",
+            alarm_description= "CloudWatch Alarm for the 4xx errors of Green target group",
+            metric= Flaskgreen4xxMetric,
+            threshold= 1,
+            evaluation_periods= 1
         )
 
         # ================================================================================================
@@ -234,9 +322,9 @@ class FlaskPipelineStack(core.Stack):
             service_name= ECS_APP_NAME
         )
 
-        FlaskAppService.connections.allow_from(alb, aws_ec2.Port.tcp(80))
-        FlaskAppService.connections.allow_from(alb, aws_ec2.Port.tcp(8080))
-        FlaskAppService.attach_to_application_target_group(FlaskGroup)
+        FlaskAppService.connections.allow_from(Flaskalb, aws_ec2.Port.tcp(80))
+        FlaskAppService.connections.allow_from(Flaskalb, aws_ec2.Port.tcp(8080))
+        FlaskAppService.attach_to_application_target_group(FlaskBlueGroup)
 
         # =============================================================================
         # CODE DEPLOY - Deployment Group CUSTOM RESOURCE for the Application deployment
@@ -250,10 +338,15 @@ class FlaskPipelineStack(core.Stack):
                 "DeploymentGroupName": ECS_DEPLOYMENT_GROUP_NAME,
                 "DeploymentConfigName": ECS_DEPLOYMENT_CONFIG_NAME,
                 "ServiceRoleArn": FlaskcodeDeployServiceRole.role_arn,
-                "AppTargetGroup": FlaskGroup.target_group_name,
-                "AppListenerArn": FlaskalbProdListener.listener_arn,
+                "BlueTargetGroup": FlaskBlueGroup.target_group_name,
+                "GreenTargetGroup": FlaskGreenGroup.target_group_name,
+                "ProdListenerArn": FlaskalbProdListener.listener_arn,
+                "TestListenerArn": FlaskalbTestListener.listener_arn,
                 "EcsClusterName": ecs_cluster.cluster_name,
                 "EcsServiceName": FlaskAppService.service_name,
+                "TerminationWaitTime": ECS_TASKSET_TERMINATION_WAIT_TIME,
+                "BlueGroupAlarm": FlaskblueGroupAlarm.alarm_name,
+                "GreenGroupAlarm": FlaskgreenGroupAlarm.alarm_name,
             }
         )
 
@@ -383,5 +476,5 @@ class FlaskPipelineStack(core.Stack):
         core.CfnOutput(self, "FlaskLBDns", 
             description= "Load balancer DNS",
             export_name= "FlaskLBDns",
-            value= alb.load_balancer_dns_name
+            value= Flaskalb.load_balancer_dns_name
         )
