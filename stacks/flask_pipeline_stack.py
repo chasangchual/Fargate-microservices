@@ -19,7 +19,7 @@ from aws_cdk import (
 class FlaskPipelineStack(core.Stack):
     
 
-    def __init__(self, scope: core.Construct, id: str, vpc:aws_ec2.Vpc, ecs_cluster=aws_ecs.Cluster, alb=elbv2.ApplicationLoadBalancer, albTestListener=elbv2.ApplicationListener,albProdListener=elbv2.ApplicationListener, FlaskblueGroup=elbv2.ApplicationTargetGroup, FlaskgreenGroup=elbv2.ApplicationTargetGroup, **kwargs) -> None:
+    def __init__(self, scope: core.Construct, id: str, vpc:aws_ec2.Vpc, ecs_cluster=aws_ecs.Cluster, alb=elbv2.ApplicationLoadBalancer, albTestListener=elbv2.ApplicationListener,albProdListener=elbv2.ApplicationListener, FlaskBlueGroup=elbv2.ApplicationTargetGroup, FlaskGreenGroup=elbv2.ApplicationTargetGroup, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         ECS_APP_NAME="Flask-app",

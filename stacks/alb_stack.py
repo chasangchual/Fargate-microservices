@@ -10,8 +10,8 @@ class AlbStack(core.Stack):
     def __init__(self, scope: core.Construct, id: str, vpc:aws_ec2.Vpc, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-      # =============================================================================
-        # VPC, ECS Cluster, ELBs and Target groups for the Blue/ Green deployment - Nginx
+        # =============================================================================
+        # Nginx Application Loadbalancer configuration
         # =============================================================================
 
         # Creating an application load balancer, listener and two target groups for Blue/Green deployment
@@ -61,18 +61,18 @@ class AlbStack(core.Stack):
 
         # Registering the blue target group with the production listener of load balancer
         self.albProdListener.add_target_groups("blueTarget",
-            target_groups= [blueGroup]
+            target_groups= [self.blueGroup]
         )
 
 
         # Registering the green target group with the test listener of load balancer
         self.albTestListener.add_target_groups("greenTarget",
-            target_groups= [greenGroup]
+            target_groups= [self.greenGroup]
         )
 
 
-       # =============================================================================
-        # VPC, ECS Cluster, ELBs and Target groups for the Blue/ Green deployment - Flask
+        # =============================================================================
+        #  Flask Application Loadbalancer configuration 
         # =============================================================================
 
         # Target Group 1
@@ -106,7 +106,7 @@ class AlbStack(core.Stack):
         self.albProdListener.add_target_groups("FlaskblueTarget",
             priority=1, 
             path_pattern = "/api/*",
-            target_groups= [FlaskBlueGroup]
+            target_groups= [self.FlaskBlueGroup]
         )
 
         # Registering the green target group with the test listener of load balancer
@@ -114,5 +114,5 @@ class AlbStack(core.Stack):
         self.albTestListener.add_target_groups("FlaskgreenTarget",
             priority=1, 
             path_pattern = "/api/*",
-            target_groups= [FlaskGreenGroup]
+            target_groups= [self.FlaskGreenGroup]
         )

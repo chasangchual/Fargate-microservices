@@ -135,7 +135,7 @@ class BlueGreen(core.Stack):
             metric_name= 'HTTPCode_Target_4XX_Count',
             dimensions={
                 "TargetGroup":blueGroup.target_group_full_name,
-                "LoadBalancer":self.alb.load_balancer_full_name
+                "LoadBalancer":alb.load_balancer_full_name
             },
             statistic="sum",
             period=core.Duration.minutes(1)
@@ -154,7 +154,7 @@ class BlueGreen(core.Stack):
             metric_name= 'HTTPCode_Target_4XX_Count',
             dimensions= {
                 "TargetGroup":greenGroup.target_group_full_name,
-                "LoadBalancer":self.alb.load_balancer_full_name
+                "LoadBalancer":alb.load_balancer_full_name
             },
             statistic= "sum",
             period= core.Duration.minutes(1)
@@ -241,9 +241,9 @@ class BlueGreen(core.Stack):
             service_name= ECS_APP_NAME
         )
 
-        NginxAppService.connections.allow_from(self.alb, aws_ec2.Port.tcp(80))
-        NginxAppService.connections.allow_from(self.alb, aws_ec2.Port.tcp(8080))
-        NginxAppService.attach_to_application_target_group(self.blueGroup)
+        NginxAppService.connections.allow_from(alb, aws_ec2.Port.tcp(80))
+        NginxAppService.connections.allow_from(alb, aws_ec2.Port.tcp(8080))
+        NginxAppService.attach_to_application_target_group(blueGroup)
 
         # =============================================================================
         # CODE DEPLOY - Deployment Group CUSTOM RESOURCE for the Blue/ Green deployment
@@ -257,10 +257,10 @@ class BlueGreen(core.Stack):
                 "DeploymentGroupName": ECS_DEPLOYMENT_GROUP_NAME,
                 "DeploymentConfigName": ECS_DEPLOYMENT_CONFIG_NAME,
                 "ServiceRoleArn": codeDeployServiceRole.role_arn,
-                "BlueTargetGroup": self.blueGroup.target_group_name,
-                "GreenTargetGroup": self.greenGroup.target_group_name,
-                "ProdListenerArn": self.albProdListener.listener_arn,
-                "TestListenerArn": self.albTestListener.listener_arn,
+                "BlueTargetGroup": blueGroup.target_group_name,
+                "GreenTargetGroup": greenGroup.target_group_name,
+                "ProdListenerArn": albProdListener.listener_arn,
+                "TestListenerArn": albTestListener.listener_arn,
                 "EcsClusterName": ecs_cluster.cluster_name,
                 "EcsServiceName": NginxAppService.service_name,
                 "TerminationWaitTime": ECS_TASKSET_TERMINATION_WAIT_TIME,
@@ -427,5 +427,5 @@ class BlueGreen(core.Stack):
         core.CfnOutput(self, "ecsBlueGreenLBDns", 
             description= "Load balancer DNS",
             export_name= "ecsBlueGreenLBDns",
-            value= self.alb.load_balancer_dns_name
+            value= alb.load_balancer_dns_name
         )
