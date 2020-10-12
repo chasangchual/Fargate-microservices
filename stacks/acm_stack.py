@@ -29,4 +29,11 @@ class ACMStack(core.Stack):
             subject_alternative_names=['*.'+domain_name],
             region= 'us-east-1'
         )
+
+        self.cert_manager_eu = acm.DnsValidatedCertificate(self, 'acm-eu-central',
+            hosted_zone=dns_zone,
+            domain_name=domain_name,
+            subject_alternative_names=['*.'+domain_name],
+            region= 'eu-central-1'
+        )
         

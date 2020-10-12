@@ -19,7 +19,7 @@ class CDNStack(core.Stack):
 
         bucketName = s3.Bucket.from_bucket_name(self, 's3bucket',s3bucket )
 
-        path_patterns = ["/api/*", "/buritos/*", "/hello"]
+        #path_patterns = ["/api/*", "/buritos/*", "/hello"]
 
         self.cdn_id = cdn.CloudFrontWebDistribution(self,'webhosting-cdn',
             origin_configs=[
@@ -31,7 +31,7 @@ class CDNStack(core.Stack):
                     ),
                     behaviors=[
                         cdn.Behavior(
-                            is_default_behavior=True,
+                            path_pattern= ["/assets/*"],
                             allowed_methods= cdn.CloudFrontAllowedMethods.ALL,
                             cached_methods= cdn.CloudFrontAllowedCachedMethods.GET_HEAD,
                         )
@@ -44,15 +44,16 @@ class CDNStack(core.Stack):
                 ),
                     behaviors = [ 
                         cdn.Behavior(
+                            is_default_behavior=True,
                             allowed_methods= cdn.CloudFrontAllowedMethods.ALL,
-                            path_pattern=path_pattern,
+                            #path_pattern=path_pattern,
                             forwarded_values= {
                                 "query_string":True,
                                 "cookies": {"forward": "all"},
                                 "headers": ['*']
                             },
                         )
-                        for path_pattern in path_patterns
+                        #for path_pattern in path_patterns
                     ]   
                 )
             ],
@@ -85,7 +86,7 @@ class CDNStack(core.Stack):
             zone=hostedzone,
             target=r53.RecordTarget.from_alias(alias_target=r53targets.CloudFrontTarget(self.cdn_id)),
             #target=r53.RecordTarget.from_alias(alias_target="d1w8o2vctuxdpo.cloudfront.net"),
-            record_name='app'
+            record_name='dev'
         )
 
 

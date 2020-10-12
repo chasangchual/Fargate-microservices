@@ -24,12 +24,17 @@ class VPCStack(core.Stack):
                     cidr_mask=24
                 ),
                 ec2.SubnetConfiguration(
+                    name="Private",
+                    subnet_type=ec2.SubnetType.PRIVATE,
+                    cidr_mask=24
+                ),
+                ec2.SubnetConfiguration(
                     name="Isolated",
                     subnet_type=ec2.SubnetType.ISOLATED,
                     cidr_mask=24
                 ),
             ],
-            nat_gateways=0
+            nat_gateways=1
         )
 
         priv_subnets = [subnet.subnet_id for subnet in self.vpc.private_subnets]

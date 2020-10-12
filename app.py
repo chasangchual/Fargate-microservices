@@ -15,10 +15,10 @@ from stacks.cdn_stack import CDNStack
 app                     = core.App()
 vpc_stack               = VPCStack(app, 'vpc-stack')
 ecs_stack               = ECSStack(app, 'ecs-stack', vpc=vpc_stack.vpc)
-alb_stack               = AlbStack(app,'alb-stack', vpc=vpc_stack.vpc)
-s3_stack                = S3Stack(app, 's3-stack')
 dns_stack               = DNSStack(app,'dns-stack')
 acm_stack               = ACMStack(app, 'acm-stack')
+alb_stack               = AlbStack(app,'alb-stack', vpc=vpc_stack.vpc,acmcert=acm_stack.cert_manager_eu)
+s3_stack                = S3Stack(app, 's3-stack')
 cdn_stack               = CDNStack(app, 'cdn-stack',s3bucket=core.Fn.import_value('FlaskFrontendBucket'),
                                             acmcert=acm_stack.cert_manager,
                                             hostedzone=dns_stack.hosted_zone,

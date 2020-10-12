@@ -7,7 +7,7 @@ from aws_cdk import (
 class AlbStack(core.Stack):
     
 
-    def __init__(self, scope: core.Construct, id: str, vpc:aws_ec2.Vpc, **kwargs) -> None:
+    def __init__(self, scope: core.Construct, id: str, acmcert,vpc:aws_ec2.Vpc, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         # =============================================================================
@@ -28,8 +28,16 @@ class AlbStack(core.Stack):
             port=8080
         )
 
-        self.albProdListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere')
-        self.albTestListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere')
+        self.https_listener = self.alb.add_listener(
+            "HTTPSListener",
+            port=443,
+            certificates=[elbv2.ListenerCertificate(acmcert.certificate_arn)],
+            open=True,
+        )
+
+        self.albProdListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere on port 80')
+        self.albTestListener.connections.allow_default_port_from_any_ipv4('Allow traffic from everywhere on port 8080')
+        self.https_listener.connections.allow_from_any_ipv4(aws_ec2.Port.tcp(443),'Allow traffic from everywhere on port 443')
 
         # Target group 1
         self.blueGroup = elbv2.ApplicationTargetGroup(self, "blueGroup",
@@ -70,6 +78,11 @@ class AlbStack(core.Stack):
             target_groups= [self.greenGroup]
         )
 
+        self.https_listener.add_target_groups(
+            "HTTPSDefaultTargetGroup",
+            target_groups=[self.blueGroup],
+        )
+
 
         # =============================================================================
         #  Flask Application Loadbalancer configuration 
@@ -105,7 +118,7 @@ class AlbStack(core.Stack):
 
         self.albProdListener.add_target_groups("FlaskblueTarget",
             priority=1, 
-            path_patterns = ["/api/*", "/buritos/*", "/hello"],
+            path_patterns = ["/api/*", "/buritos/*", "/hello*"],
             target_groups= [self.FlaskBlueGroup]
         )
 
@@ -113,6 +126,13 @@ class AlbStack(core.Stack):
 
         self.albTestListener.add_target_groups("FlaskgreenTarget",
             priority=1, 
-            path_patterns = ["/api/*", "/buritos/*","/hello"],
+            path_patterns = ["/api/*", "/buritos/*","/hello*"],
             target_groups= [self.FlaskGreenGroup]
+        )
+
+        self.https_listener.add_target_groups(
+            "HTTPSDefaultTargetGroup",
+            priority=1, 
+            path_patterns = ["/api/*", "/buritos/*","/hello*"],
+            target_groups=[self.FlaskBlueGroup],
         )
