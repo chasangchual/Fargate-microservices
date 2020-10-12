@@ -1,4 +1,6 @@
 env
 cdk.out
 cdk.context.json
-
+.vscode
+stacks/__pycache__
+.python-version

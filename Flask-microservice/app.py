@@ -21,7 +21,7 @@ def indexmain():
 #     time = datetime.datetime.now()
 #     python_version = platform.python_version()
 #     aws_platform = os.environ.get('PLATFORM', 'Ben Platform')
-#     return flask.render_template('hello.html',
+#     return flask.render_template('index.html',
 #                                  platform=aws_platform,
 #                                  flask_version=flask.__version__,
 #                                  python_version=python_version,

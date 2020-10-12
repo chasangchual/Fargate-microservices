@@ -34,7 +34,7 @@ class VPCStack(core.Stack):
                     cidr_mask=24
                 ),
             ],
-            nat_gateways=1
+            nat_gateways=0
         )
 
         priv_subnets = [subnet.subnet_id for subnet in self.vpc.private_subnets]

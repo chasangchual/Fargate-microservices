@@ -105,7 +105,7 @@ class AlbStack(core.Stack):
 
         self.albProdListener.add_target_groups("FlaskblueTarget",
             priority=1, 
-            path_patterns = ["/api/*", "/buritos/*"],
+            path_patterns = ["/api/*", "/buritos/*", "/hello"],
             target_groups= [self.FlaskBlueGroup]
         )
 
@@ -113,6 +113,6 @@ class AlbStack(core.Stack):
 
         self.albTestListener.add_target_groups("FlaskgreenTarget",
             priority=1, 
-            path_patterns = ["/api/*", "/buritos/*"],
+            path_patterns = ["/api/*", "/buritos/*","/hello"],
             target_groups= [self.FlaskGreenGroup]
         )

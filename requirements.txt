@@ -15,3 +15,8 @@ aws_cdk.aws_logs
 aws_cdk.aws_codepipeline
 aws_cdk.aws_s3
 aws_cdk.aws_codepipeline_actions
+aws_cdk.aws_s3_deployment
+aws_cdk.aws_wafv2
+aws_cdk.aws_route53_targets
+aws_cdk.aws_route53
+aws_cdk.aws-cloudfront
