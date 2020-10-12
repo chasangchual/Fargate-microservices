@@ -14,18 +14,19 @@ class ACMStack(core.Stack):
 
         prj_name = self.node.try_get_context("project_name")
         env_name = self.node.try_get_context("env")
+        domain_name = self.node.try_get_context("domain_name")
 
         zone_id = ssm.StringParameter.from_string_parameter_name(self, 'zone-id-ssm', string_parameter_name='/'+env_name+'/zone-id')
 
         dns_zone = r53.HostedZone.from_hosted_zone_attributes(self, 'hosted-zone',
             hosted_zone_id=zone_id.string_value,
-            zone_name='reasent.com'
+            zone_name=domain_name
         )
 
         self.cert_manager = acm.DnsValidatedCertificate(self, 'acm-id',
             hosted_zone=dns_zone,
-            domain_name='reasent.com',
-            subject_alternative_names=['*.reasent.com'],
+            domain_name=domain_name,
+            subject_alternative_names=['*.'+domain_name],
             region= 'us-east-1'
         )
         
