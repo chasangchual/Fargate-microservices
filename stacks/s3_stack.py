@@ -58,9 +58,9 @@ class S3Stack(core.Stack):
         FlaskFrontendBucket.grant_read(origin_access_identity)
 
         s3_deploy.BucketDeployment(self, "DeployFlaskFrontendWebsite",
-            sources=[s3_deploy.Source.asset("./static")],
+            sources=[s3_deploy.Source.asset("./static-content")],
             destination_bucket=FlaskFrontendBucket,
-            destination_key_prefix="web/static"
+           # destination_key_prefix=""
         )
 
         core.CfnOutput(self, 'S3FlaskFrontendExport',

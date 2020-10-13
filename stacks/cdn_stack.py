@@ -19,22 +19,23 @@ class CDNStack(core.Stack):
 
         bucketName = s3.Bucket.from_bucket_name(self, 's3bucket',s3bucket )
 
-        #path_patterns = ["/api/*", "/buritos/*", "/hello"]
+        path_patterns = ["/static/*", "/templates/*"]
 
         self.cdn_id = cdn.CloudFrontWebDistribution(self,'webhosting-cdn',
             origin_configs=[
                 cdn.SourceConfiguration(
-                    origin_path="/web/static",
+                 #   origin_path="/",
                     s3_origin_source=cdn.S3OriginConfig(
                         s3_bucket_source=bucketName,
                         origin_access_identity=cdn.OriginAccessIdentity(self,'webhosting-origin')
                     ),
                     behaviors=[
                         cdn.Behavior(
-                            path_pattern= ["/assets/*"],
+                            path_pattern=path_pattern,
                             allowed_methods= cdn.CloudFrontAllowedMethods.ALL,
                             cached_methods= cdn.CloudFrontAllowedCachedMethods.GET_HEAD,
                         )
+                        for path_pattern in path_patterns
                     ],
                 ),
                 cdn.SourceConfiguration(
@@ -46,14 +47,12 @@ class CDNStack(core.Stack):
                         cdn.Behavior(
                             is_default_behavior=True,
                             allowed_methods= cdn.CloudFrontAllowedMethods.ALL,
-                            #path_pattern=path_pattern,
                             forwarded_values= {
                                 "query_string":True,
                                 "cookies": {"forward": "all"},
                                 "headers": ['*']
                             },
                         )
-                        #for path_pattern in path_patterns
                     ]   
                 )
             ],

@@ -68,20 +68,12 @@ class AlbStack(core.Stack):
         )
 
         # Registering the blue target group with the production listener of load balancer
-        self.albProdListener.add_target_groups("blueTarget",
-            target_groups= [self.blueGroup]
-        )
+        self.albProdListener.add_target_groups("blueTarget",priority=1,path_patterns = ["/nginx/*"],target_groups= [self.greenGroup])
 
-
+        self.https_listener.add_target_groups("HTTPSDefaultTargetGroup",priority=1,path_patterns = ["/nginx/*"],target_groups=[self.greenGroup])
+        
         # Registering the green target group with the test listener of load balancer
-        self.albTestListener.add_target_groups("greenTarget",
-            target_groups= [self.greenGroup]
-        )
-
-        self.https_listener.add_target_groups(
-            "HTTPSDefaultTargetGroup",
-            target_groups=[self.blueGroup],
-        )
+        self.albTestListener.add_target_groups("greenTarget",priority=1,path_patterns = ["/nginx/*"],target_groups= [self.blueGroup])
 
 
         # =============================================================================
@@ -116,23 +108,11 @@ class AlbStack(core.Stack):
             }
         )
 
-        self.albProdListener.add_target_groups("FlaskblueTarget",
-            priority=1, 
-            path_patterns = ["/api/*", "/buritos/*", "/hello*"],
-            target_groups= [self.FlaskBlueGroup]
-        )
+        self.albProdListener.add_target_groups("FlaskblueTarget",target_groups= [self.FlaskGreenGroup])
+
+        self.https_listener.add_target_groups("HTTPSDefaultTargetGroup",target_groups=[self.FlaskGreenGroup],)
 
         # Registering the green target group with the test listener of load balancer
 
-        self.albTestListener.add_target_groups("FlaskgreenTarget",
-            priority=1, 
-            path_patterns = ["/api/*", "/buritos/*","/hello*"],
-            target_groups= [self.FlaskGreenGroup]
-        )
+        self.albTestListener.add_target_groups("FlaskgreenTarget",target_groups= [self.FlaskBlueGroup])
 
-        self.https_listener.add_target_groups(
-            "HTTPSDefaultTargetGroup",
-            priority=1, 
-            path_patterns = ["/api/*", "/buritos/*","/hello*"],
-            target_groups=[self.FlaskBlueGroup],
-        )
